@@ -2,20 +2,33 @@
   "name": "joi-schema-generator",
   "version": "1.0.0",
   "description": "generate joi schema from json files",
-  "main": "index.js",
+  "main": "./src/index.js",
   "files": [
     "dist"
   ],
   "bin": {
-    "generateJoiSchema": "index.js"
+    "generateJoiSchema": "./src/index.js"
   },
   "preferGlobal": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode=production --node-env=production",
+    "start": "webpack --mode=development --watch",
+    "lint": "eslint -c .eslintrc.json --ext js,ts,tsx",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiriti999/joi-schema-generator.git"
   },
   "author": "Kiriti Komaragiri",
   "license": "ISC",
   "dependencies": {
-    "joi": "^17.6.0"
+    "joi": "^17.6.0",
+    "joi-machine": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
   }
 }

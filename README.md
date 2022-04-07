@@ -7,6 +7,8 @@ Install  with npm
   npm i joi-schema-generator -g
 ```
 
+*Prerequisites: __'prettier'__ and __'eslint'__ must be installed*
+
 ## Usage/Examples
 
 ```javascript
