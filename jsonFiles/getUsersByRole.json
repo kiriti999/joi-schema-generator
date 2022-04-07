@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Authorization": "Bearer"
+    },
+    "pathParameters": {
+        "id": 43
+    }
+}
