@@ -8,7 +8,7 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '.src/index.js',
+    filename: './src/index.js',
     library: 'joi-schema-lib',
     libraryTarget: 'umd',
     clean: true
