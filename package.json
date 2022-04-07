@@ -1,6 +1,6 @@
 {
   "name": "joi-schema-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generate joi schema from json files",
   "main": "./dist/src/index.js",
   "files": [
