@@ -11,7 +11,8 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
+    "build": "webpack",
+    "build:prod": "webpack --mode=production --node-env=production",
     "start": "webpack --mode=development --watch",
     "lint": "eslint -c .eslintrc.json --ext js,ts,tsx",
     "lint:fix": "npm run lint -- --fix"
