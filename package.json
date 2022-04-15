@@ -1,6 +1,6 @@
 {
   "name": "joi-schema-generator",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "generate joi schema from json files",
   "homepage": "https://github.com/kiriti999/joi-schema-generator#readme",
   "main": "./dist/index.js",
