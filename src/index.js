@@ -135,7 +135,7 @@ function createSchemaFiles(name, ext) {
  * Formats and fixes lint issues on schema files generated
  */
 function formatAndLint() {
-    const beautify = `prettier --write ${outputFolderNamePath}/*.ts && eslint --ext js,ts,tsx`;
+    const beautify = `prettier --write ${outputFolderNamePath}/*.${fileType} && eslint --ext js,ts,tsx`;
     try {
         cp.exec(beautify, (error, stdout, stderr) => {
             if (error || stderr) throw error;
