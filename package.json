@@ -20,8 +20,7 @@
     "preinstall": "npm list prettier@2.6.2 -g || npm install prettier@2.6.2 -g",
     "postinstall": "npm list eslint@8.13.0 -g || npm install eslint@8.13.0 -g",
     "compress": "uglifyjs --output dist/index.js --compress --mangle -- src/index.js",
-    "copy": "cp -R src/*.js package.json README.md dist",
-    "prepublishOnly": "npm run copy && npm run compress"
+    "copy": "cp -R src/*.js package.json README.md dist"
   },
   "repository": {
     "type": "git",
