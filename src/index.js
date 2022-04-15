@@ -5,9 +5,20 @@ const path = require('path');
 const joiMachine = require('joi-machine');
 const cp = require('child_process');
 let args = process.argv.slice(2);
-const cs = require('./constants');
-
 console.log(`joiSchemaGenerator:: args:, '${args}'`);
+
+const cs = {
+    DELIMITER: '=',
+    DEFAULT_INPUTS: ['inputFolder=jsonFiles', 'outputFolder=schemas', 'fileType=ts'],
+    JS_IMPORT: 'const Joi = require(\'joi\');',
+    TS_IMPORT: 'import { Joi } from \'joi\';',
+    INPUT_FOLDER_NAME: 'jsonFiles',
+    OUTPUT_FOLDER_NAME: 'schemas',
+    EXTENSION: {
+        JS: 'js',
+        TS: 'ts'
+    }
+};
 
 let mapper = {
     inputFolder: 'inputFolder',
