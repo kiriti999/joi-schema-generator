@@ -1,5 +1,5 @@
-// import { Joi } from "joi";
-const Joi  = require('joi');
+import { Joi } from "joi";
+
 export const detailsSchema = Joi.object().keys({
   details: Joi.object().keys({
     name: Joi.string(),
