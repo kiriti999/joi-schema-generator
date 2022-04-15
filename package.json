@@ -31,6 +31,7 @@
     "joi-machine": "^3.0.0"
   },
   "devDependencies": {
+    "@node-minify/uglify-js": "^6.2.0",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
   }
