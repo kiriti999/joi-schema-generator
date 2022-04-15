@@ -93,7 +93,7 @@ function readFiles(dir, processFile) {
  * @param outPutFileName used to write to file as 'export const outPutFileName ='
  */
 function writeToFile(writeStream, outPutFileName) {
-    writeStream.write(fileType === cs.EXTENSION.JS ? importArgs : cs.DEFAULT_IMPORT);
+    writeStream.write(fileType === cs.EXTENSION.JS ? cs.JS_IMPORT : cs.TS_IMPORT);
     writeStream.write('\n \n');
     writeStream.write(`export const ${outPutFileName} = `);
 }
