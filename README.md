@@ -7,8 +7,6 @@ Install  with npm
   npm i joi-schema-generator -g
 ```
 
-*Prerequisites: __'prettier'__ and __'eslint'__ must be installed*
-
 ## Usage/Examples
 
 ```javascript
@@ -16,10 +14,10 @@ generateJoiSchema
 ```
 or
 ```javascript
-generateJoiSchema 'inputFolder' 'outputFolder' (both input and output folders are optional)
+generateJoiSchema 'inputFolder=jsonFiles' 'outputFolder=schemas' 'fileType=ts'
 ```
 
-*Note: __'jsonFiles'__ and __'schemas'__ are considered as input and output folders by default if no arguments are passed*
+*Note: __'jsonFiles'__, __'schemas'__ and __'ts'__ are considered as input, output and fileType by default if no arguments are passed*
 
 
 
@@ -38,11 +36,6 @@ generateJoiSchema 'inputFolder' 'outputFolder' (both input and output folders ar
 ## Contributing
 
 Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
-
 
 ## License
 

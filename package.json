@@ -16,7 +16,9 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "start": "webpack --mode=development --watch",
     "lint": "eslint -c .eslintrc.json --ext js,ts,tsx",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "preinstall": "npm list prettier@2.6.2 -g || npm install prettier@2.6.2 -g",
+    "postinstall": "npm list eslint@8.13.0 -g || npm install eslint@8.13.0 -g"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,6 @@
     "joi-machine": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.12.0",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
   }
