@@ -4,17 +4,36 @@ const fs = require('fs');
 const path = require('path');
 const joiMachine = require('joi-machine');
 const cp = require('child_process');
-const args = process.argv.slice(2);
+let args = process.argv.slice(2);
+const cs = require('./constants');
 
 console.log(`joiSchemaGenerator:: args:, '${args}'`);
 
-const inputFolderNamePath = getFolderPath(args[0] || 'jsonFiles');
-const outputFolderNamePath = getFolderPath(args[1] || 'schemas');
-const schemaArgs = (args.slice(2).join(' ')) || 'import { Joi } from \'joi\';';
+let mapper = {
+    inputFolder: 'inputFolder',
+    outputFolder: 'outputFolder',
+    fileType: 'fileType',
+};
+
+if (args.length === 0) {
+    args = cs.DEFAULT_INPUTS;
+} else {
+    for (let index = 0; index < args.length; index++) {
+        const tmpArgs = args[index]?.split(cs.DELIMITER);
+        const element = tmpArgs[0];
+        if (mapper[element]) mapper[element] = tmpArgs[1];
+    }
+}
+
+const inputFolderNamePath = getFolderPath(mapper.inputFolder === 'inputFolder' ? cs.INPUT_FOLDER_NAME : mapper.inputFolder);
+const outputFolderNamePath = getFolderPath(mapper.outputFolder === 'outputFolder' ? cs.OUTPUT_FOLDER_NAME : mapper.outputFolder);
+const fileType = mapper.fileType === 'fileType' ? cs.EXTENSION.TS : mapper.fileType;
+const importArgs = (args.slice(3)?.join(' '));
 console.log(' ------------------------------------------------------');
-console.log(`joiSchemaGenerator:: schemaArgs: '${schemaArgs}'`);
 console.log(`joiSchemaGenerator:: inputFolderNamePath:, '${inputFolderNamePath}'`);
 console.log(`joiSchemaGenerator:: outputFolderNamePath:, '${outputFolderNamePath}'`);
+console.log(`joiSchemaGenerator:: fileType:, '${fileType}'`);
+console.log(`joiSchemaGenerator:: importArgs: '${importArgs}'`);
 console.log(' -------------------------------------------------------');
 
 /**
@@ -74,7 +93,7 @@ function readFiles(dir, processFile) {
  * @param outPutFileName used to write to file as 'export const outPutFileName ='
  */
 function writeToFile(writeStream, outPutFileName) {
-    writeStream.write(schemaArgs);
+    writeStream.write(fileType === cs.EXTENSION.JS ? importArgs : cs.DEFAULT_IMPORT);
     writeStream.write('\n \n');
     writeStream.write(`export const ${outPutFileName} = `);
 }
@@ -90,7 +109,7 @@ function createSchemaFiles(name, ext) {
         console.log(`joiSchemaGenerator:: files found: ${name}${ext}`);
         const outPutFileName = `${name}Schema`;
         const rs = fs.createReadStream(`${inputFolderNamePath}/${name}${ext}`).pipe(joiMachine());
-        const ws = fs.WriteStream(`${outputFolderNamePath}/${outPutFileName}.ts`);
+        const ws = fs.WriteStream(`${outputFolderNamePath}/${outPutFileName}.${fileType}`);
         writeToFile(ws, outPutFileName);
         rs.pipe(ws);
         formatAndLint();
